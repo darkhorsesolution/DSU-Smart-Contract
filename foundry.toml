@@ -1,0 +1,33 @@
+
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+script = "script"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+
+# Default RPC (can be overridden by CLI or env var)
+# It's common to use an env var in CI/local instead of hardcoding here:
+rpc_url = "${SEPOLIA_RPC_URL}"
+
+# Etherscan API key (optional — used for `forge verify-contract`)
+etherscan_api_key = "${ETHERSCAN_API_KEY}"
+
+# Default remappings for common libraries used in this project.
+# Make sure the folders exist under lib/ (use `forge install ...` to populate them).
+remappings = [
+  "@uniswap/v4-core/=lib/v4-core/",
+  "@uniswap/v4-periphery/=lib/v4-periphery/",
+  "v4-core/=lib/v4-core/",
+  "v4-periphery/=lib/v4-periphery/",
+  "@openzeppelin/=lib/openzeppelin-contracts/",
+  "usingtellor/=lib/usingtellor/",
+  "forge-std/=lib/forge-std/src/"
+]
+
+[profile.sepolia]
+rpc_url = "${SEPOLIA_RPC_URL}"
+etherscan_api_key = "${ETHERSCAN_API_KEY}"
